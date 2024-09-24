@@ -9,9 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - name: Check environment variables
+        run: |
+          echo "GH_TOKEN: ${{ secrets.GH_TOKEN }}"
+          echo "GIST_ID: ${{ secrets.GIST_ID }}"
+          echo "WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}"
       - name: Update gist
         uses: matchai/waka-box@master
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GIST_ID: ${{ secrets.GIST_ID }}
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+
